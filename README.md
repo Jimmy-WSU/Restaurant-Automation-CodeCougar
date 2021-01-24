@@ -1,4 +1,5 @@
 # Restaurant-Automation
-Jianqiao Liu
-Wen-Chih.Li
-Parikshit Panwar
+Team member:
+  Jianqiao Liu
+  Wen-Chih.Li
+  Parikshit Panwar
