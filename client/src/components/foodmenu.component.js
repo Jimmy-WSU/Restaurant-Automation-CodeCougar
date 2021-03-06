@@ -6,9 +6,8 @@ export default class homepage extends Component {
     render() {
         return (
             <form>
-                <h3>homepage</h3>
-                <Link className="form-control" to="/foodmenu">Food menu</Link>
-                <Link className="form-control" to="/order">Order</Link>
+                <h3>Foodmenu</h3>
+
             </form>
         );
     }

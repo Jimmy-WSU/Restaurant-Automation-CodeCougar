@@ -32,9 +32,9 @@ export default class Login extends Component {
                     </div>
                 </div>
                 <div>
-                <form onSubmit={this.submitForm.bind(this)}>
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                </form>
+                    <form onSubmit={this.submitForm.bind(this)}>
+                       <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                    </form>
                 </div>
                 <p className="forgot-password text-right">
                      <a href="#">Forgot password?</a>

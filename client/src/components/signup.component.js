@@ -5,7 +5,7 @@ export default class SignUp extends Component {
         return (
             <form>
                 <h3>Sign Up</h3>
-                
+
                 <div className="form-group">
                     <label>Title</label>
                     <input type="text" className="form-control" placeholder="ex: manager" />
@@ -26,8 +26,6 @@ export default class SignUp extends Component {
                     <input type="email" className="form-control" placeholder="Enter email" />
                 </div>
 
-                
-
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter password" />
@@ -36,8 +34,8 @@ export default class SignUp extends Component {
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
                 <p className="forgot-password text-right">
                     Already registered <a href="http://localhost:3000/sign-in#">sign in?</a>
-       
                 </p>
+                
             </form>
         );
     }
