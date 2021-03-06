@@ -5,6 +5,11 @@ export default class SignUp extends Component {
         return (
             <form>
                 <h3>Sign Up</h3>
+                
+                <div className="form-group">
+                    <label>Title</label>
+                    <input type="text" className="form-control" placeholder="ex: manager" />
+                </div>
 
                 <div className="form-group">
                     <label>UserID</label>
@@ -20,6 +25,8 @@ export default class SignUp extends Component {
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
                 </div>
+
+                
 
                 <div className="form-group">
                     <label>Password</label>
