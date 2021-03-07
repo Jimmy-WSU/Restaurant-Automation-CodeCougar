@@ -56,7 +56,7 @@ export default class Login extends Component {
         })
             .catch(()=>{alert('error')})
             console.log('componentDidMount')
-        }
+    }
         // axios.get('http://localhost:3001/login').then((res)=>(
         //     // this.setState({list : [...res.data]})
         //     console.log(res)

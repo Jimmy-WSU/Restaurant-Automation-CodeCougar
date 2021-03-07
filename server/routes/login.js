@@ -16,9 +16,6 @@ router.use('/', function(req, res, next) {
     pool.query("SELECT password FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {
         // console.log(err)
         if (err) throw err;
-        console.log(rows===undefined);
-        console.log(rows[0]===undefined);
-        console.log(rows[0]!==undefined);
         if (rows[0]!==undefined) {
             if (req.body.password == rows[0].password){
                 res.json({
