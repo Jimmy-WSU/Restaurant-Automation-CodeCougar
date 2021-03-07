@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-  
-export default class homepage extends Component {
+
+export default class table extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          noodles: false,
-          coffee: false,
-          steak: false,
+          Table1: false,
+          Table2: false,
+          Table3: false,
 
         };
     
@@ -18,7 +17,6 @@ export default class homepage extends Component {
       handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        
         const name = target.name;
     
         this.setState({
@@ -30,36 +28,35 @@ export default class homepage extends Component {
         return (
           <form>
             <label>
-              Noodles $100:
+              Table1:
               <input
-                name="noodles"
+                name="Table1"
                 type="checkbox"
-                checked={this.state.noodles}
+                checked={this.state.table1}
                 onChange={this.handleInputChange} />
             </label>
             <br />
             <label>
-              coffee $20:
+              Table2:
               <input
-                name="coffee"
+                name="Table2"
                 type="checkbox"
-                checked={this.state.coffee}
+                checked={this.state.Table2}
                 onChange={this.handleInputChange} />
                 </label>
                 <br />
                 <label>
-              steak $200:
+                Table3:
               <input
-                name="steak"
+                name="Table3"
                 type="checkbox"
-                checked={this.state.steak}
+                checked={this.state.Table3}
                 onChange={this.handleInputChange} />
             </label>
             <div>
                 <button variant="outline-primary">Submit</button>
                 <button variant="outline-primary">Cancel</button>
-
-
+        
                     
                 </div>
           </form>
@@ -67,5 +64,4 @@ export default class homepage extends Component {
       }
   
     }
-    
     
