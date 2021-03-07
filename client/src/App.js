@@ -7,6 +7,8 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import homepage from "./components/homepage.component";
 import foodmenu from "./components/foodmenu.component";
+import order from "./components/order.component";
+
 
 
 function App() {
@@ -29,6 +31,9 @@ function App() {
               <li className="nav-item">
               <Link className="nav-link" to={"/foodmenu"}>Foodmenu</Link>
               </li>
+              <li className="nav-item">
+              <Link className="nav-link" to={"/order"}>Order</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -42,7 +47,7 @@ function App() {
             <Route path="/sign-up" component={SignUp} />
             <Route path="/homepage" component={homepage} />
             <Route path="/foodmenu" component={foodmenu} />
-
+            <Route path="/order" component={order} />
           </Switch>
         </div>
       </div>
