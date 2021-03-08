@@ -14,7 +14,6 @@ var pool  = mysql.createPool({
 router.use('/', function(req, res, next) {
     // console.log(req.body)
     pool.query("SELECT * FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {
-        console.log(rows[0].password)
         if (err) throw err;
         if (rows[0]!==undefined) {
             if (req.body.password == rows[0].password){

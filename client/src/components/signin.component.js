@@ -75,7 +75,7 @@ export default class Signin extends Component {
         // }
     render() {
         return (
-            <form>
+            <form onSubmit={this.submitForm.bind(this)}>
                 <h3>Sign In</h3>
                 <div className="form-group">
                     <label>UserName</label>
@@ -92,11 +92,11 @@ export default class Signin extends Component {
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
                         <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                     </div>
-                </div>
+                </div>  
                 <div>
-                    <form onSubmit={this.submitForm.bind(this)}>
+                    {/* <form onSubmit={this.submitForm.bind(this)}> */}
                        <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                    </form>
+                    {/* </form> */}
                 </div>
                 <p className="forgot-password text-right">
                      <a href="#">Forgot password?</a>
