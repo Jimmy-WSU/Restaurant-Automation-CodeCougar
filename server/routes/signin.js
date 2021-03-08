@@ -13,13 +13,14 @@ var pool  = mysql.createPool({
 /* User Login */
 router.use('/', function(req, res, next) {
     // console.log(req.body)
-    pool.query("SELECT password FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {
-        // console.log(err)
+    pool.query("SELECT * FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {
+        console.log(rows[0].password)
         if (err) throw err;
         if (rows[0]!==undefined) {
             if (req.body.password == rows[0].password){
                 res.json({
-                    status: 'Successful'
+                    status: 'Successful',
+                    role: rows[0].role
                 })
             } else {
                 res.json({

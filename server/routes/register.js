@@ -12,7 +12,7 @@ var pool  = mysql.createPool({
 
 /* User Register */
 router.use('/', function(req, res, next) {
-    // console.log(req.body)
+    console.log(req.body)
     pool.query("SELECT * FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {
         // console.log(err)
         if (err) throw err;
@@ -22,12 +22,14 @@ router.use('/', function(req, res, next) {
             })
         } 
         else {
-            pool.query("INSERT INTO user (username, password, role) VALUES ('"+ req.body.username + "', '" + req.body.password + "', '" + req.body.role + "')", function (err, rows, fields) {
+            pool.query("INSERT INTO user (username, password, role, firstname, lastname) VALUES ('"
+                + req.body.username + "', '" + req.body.password + "', '" + req.body.role +  "', '" + req.body.firstname +  "', '" 
+                + req.body.lastname + "')", function (err, rows, fields) {
                 // console.log(err)
                 if (err) throw err;
                 console.log(rows)
                 res.json({
-                    status: 'Sucessful'
+                    status: 'Successful'
                 })
             })
         }

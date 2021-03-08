@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios"
-import { message, Button, Space } from 'antd';
+import { message } from 'antd';
 
-export default class Login extends Component {
+export default class Signin extends Component {
     
     constructor(props) {
         super(props);
@@ -39,21 +39,27 @@ export default class Login extends Component {
         e.preventDefault()
         console.log(this.state);
         // this.props.history.push('/homepage'); // <--- The page you want to redirect your user to.
-        axios.post('http://localhost:3001/login',{
+        axios.post('http://localhost:3001/signin',{
             username: this.state.username,
             password: this.state.password
         }, { headers: { "Content-type": "application/json" }}).then((res)=>{
             // this.setState({list : [...res.data]})
-            console.log(res.data.status)
-            if (res.data.status == 'Successful') {
+            console.log(res.data)
+            if (res.data.status === 'Successful') {
                 message.success('Successful');
-                this.props.history.push('/homepage');
+                if(res.data.role === 'Chef') {
+                    this.props.history.push('/homepagechef');
+                } else if (res.data.role === 'Waiter') {
+                    this.props.history.push('/homepagewaiter');
+                } else if (res.data.role === 'Manager') {
+                    this.props.history.push('/homepagemanager');
+                }
             }
-            if (res.data.status == 'Incorrect password') {
+            if (res.data.status === 'Incorrect password') {
                 // alert('Incorrect password');
                 message.error('Incorrect password');
             }
-            if (res.data.status == 'Incorrect username') {
+            if (res.data.status === 'Incorrect username') {
                 message.error('Incorrect username');
             }
         })

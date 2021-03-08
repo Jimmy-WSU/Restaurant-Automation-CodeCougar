@@ -12,7 +12,7 @@ var app = express();
 // app.use(bodyParser.urlencoded({ extended: false }))
 
 var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
+var signinRouter = require('./routes/signin');
 var registerRouter = require('./routes/register');
 
 // view engine setup
@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
+app.use('/signin', signinRouter);
 app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
