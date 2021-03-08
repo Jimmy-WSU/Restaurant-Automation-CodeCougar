@@ -25,6 +25,10 @@ export default class homepage extends Component {
           [name]: value
         });
       }
+      onSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+      }
     
       render() {
         return (

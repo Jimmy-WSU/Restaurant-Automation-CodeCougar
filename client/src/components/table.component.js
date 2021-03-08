@@ -26,32 +26,65 @@ export default class table extends Component {
     
       render() {
         return (
+          
           <form>
+            <p>occupency, tablestatus</p>
             <label>
-              Table1:
               <input
                 name="Table1"
                 type="checkbox"
                 checked={this.state.table1}
                 onChange={this.handleInputChange} />
+                :Table1
+            </label>
+            
+            <space width="16" />
+            <label>
+              <input
+                name="Table1"
+                type="checkbox"
+                checked={this.state.table1}
+                onChange={this.handleInputChange} />
+                :Table1
             </label>
             <br />
             <label>
-              Table2:
+              
               <input
                 name="Table2"
                 type="checkbox"
                 checked={this.state.Table2}
                 onChange={this.handleInputChange} />
+                :Table2
                 </label>
+                <label>
+              
+              <input
+                name="Table2"
+                type="checkbox"
+                checked={this.state.Table2}
+                onChange={this.handleInputChange} />
+                :Table2
+                </label>
+
                 <br />
                 <label>
-                Table3:
+                
               <input
                 name="Table3"
                 type="checkbox"
                 checked={this.state.Table3}
                 onChange={this.handleInputChange} />
+                :Table3
+            </label>
+            <label>
+                
+              <input
+                name="Table3"
+                type="checkbox"
+                checked={this.state.Table3}
+                onChange={this.handleInputChange} />
+                :Table3
             </label>
             <div>
                 <button variant="outline-primary">Submit</button>
@@ -60,6 +93,7 @@ export default class table extends Component {
                     
                 </div>
           </form>
+          
         );
       }
   
