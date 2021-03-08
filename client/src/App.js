@@ -13,6 +13,8 @@ import homepagechef from "./components/homepagechef.component";
 import homepagemanager from "./components/homepagemanager.component";
 import homepagebusboy from "./components/homepagebusboy.component";
 import tablestatus from "./components/tablestatus.component";
+import salesanalysis from "./components/salesanalysis.component";
+import trackemployee from "./components/trackemployee.component";
 
 
 
@@ -64,7 +66,10 @@ function App() {
             <Route path="/order" component={order} />
             <Route path="/table" component={table} />
             <Route path="/tablestatus" component={tablestatus} />
+            <Route path="/salesanalysis" component={salesanalysis} />
+            <Route path="/trackemployee" component={trackemployee} />
 
+            
           </Switch>
         </div>
       </div>
