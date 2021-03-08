@@ -30,7 +30,7 @@ render(){
     
     
     <Column
-      title="Tags"
+      title="Status"
       dataIndex="tags"
       key="tags"
       render={tags => (

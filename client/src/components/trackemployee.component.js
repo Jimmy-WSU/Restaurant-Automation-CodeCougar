@@ -27,11 +27,8 @@ render(){
       <form>
           <h4>Trackemployee</h4>
       
-  <Table dataSource={data}>
-    
-      <Column title="employee" dataIndex="employee" key="employee" />
-    
-    
+    <Table dataSource={data}>
+    <Column title="employee" dataIndex="employee" key="employee" />
     <Column
       title="Status"
       dataIndex="tags"
@@ -62,8 +59,8 @@ render(){
         </Space>
       )}
     />
-  </Table>
-  </form>
+    </Table>
+    </form>
   );
 }
-      }
+}
