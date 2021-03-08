@@ -17,7 +17,7 @@ import homepagemanager from "./components/homepagemanager.component";
 function App() {
   return (<Router>
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
           <Link className="navbar-brand" to={"/homepage"}>Restaurant Automation</Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">

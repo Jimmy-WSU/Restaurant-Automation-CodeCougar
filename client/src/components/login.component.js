@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios"
+import { message, Button, Space } from 'antd';
 
 export default class Login extends Component {
     
@@ -45,16 +46,18 @@ export default class Login extends Component {
             // this.setState({list : [...res.data]})
             console.log(res.data.status)
             if (res.data.status == 'Successful') {
+                message.success('Successful');
                 this.props.history.push('/homepage');
             }
             if (res.data.status == 'Incorrect password') {
-                alert('Incorrect password');
+                // alert('Incorrect password');
+                message.error('Incorrect password');
             }
             if (res.data.status == 'Incorrect username') {
-                alert('Incorrect username');
+                message.error('Incorrect username');
             }
         })
-            .catch(()=>{alert('error')})
+            .catch(()=>{message.error('Internet error');})
             console.log('componentDidMount')
     }
         // axios.get('http://localhost:3001/login').then((res)=>(

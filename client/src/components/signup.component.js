@@ -39,13 +39,10 @@ export default class SignUp extends Component {
             // this.setState({list : [...res.data]})
             console.log(res.data.status)
             if (res.data.status == 'Successful') {
-                this.props.history.push('/homepage');
+                this.props.history.push('/login');
             }
-            if (res.data.status == 'Incorrect password') {
-                alert('Incorrect password');
-            }
-            if (res.data.status == 'Incorrect username') {
-                alert('Incorrect username');
+            if (res.data.status == 'Username already exists') {
+                alert('Username already exists');
             }
         })
             .catch(()=>{alert('error')})
