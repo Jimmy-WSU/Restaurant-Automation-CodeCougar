@@ -2,14 +2,15 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import homepage from "./components/homepage.component";
 import foodmenu from "./components/foodmenu.component";
 import order from "./components/order.component";
 import table from "./components/table.component";
-
+import homepagewaiter from "./components/homepagewaiter.component";
+import homepagechef from "./components/homepagechef.component";
+import homepagemanager from "./components/homepagemanager.component";
 
 
 
@@ -52,9 +53,13 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/homepage" component={homepage} />
+            <Route path="/homepagewaiter" component={homepagewaiter} />
+            <Route path="/homepagechef" component={homepagechef} />
+            <Route path="/homepagemanager" component={homepagemanager} />
             <Route path="/foodmenu" component={foodmenu} />
             <Route path="/order" component={order} />
             <Route path="/table" component={table} />
+
           </Switch>
         </div>
       </div>

@@ -7,8 +7,10 @@ export default class homepage extends Component {
         return (
             <form>
                 <h3>homepage</h3>
-                <Link className="form-control" to="/foodmenu">Food menu</Link>
-                <Link className="form-control" to="/order">Order</Link>
+                <Link className="form-control" to="/homepagewaiter">waiter</Link>
+                <Link className="form-control" to="/homepagechef">chef</Link>
+                <Link className="form-control" to="/homepagemanager">manager</Link>
+
             </form>
         );
     }
