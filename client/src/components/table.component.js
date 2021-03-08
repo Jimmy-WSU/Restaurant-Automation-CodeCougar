@@ -24,6 +24,8 @@ const data = [
 export default class table extends Component {
 render(){
   return (
+    <form>
+      <h4>Table</h4>
   <Table dataSource={data}>
     
       <Column title="Table number" dataIndex="tablenumber" key="tablenumber" />
@@ -54,6 +56,7 @@ render(){
       )}
     />
   </Table>
+  </form>
   );
 }
       }

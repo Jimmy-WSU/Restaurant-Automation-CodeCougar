@@ -33,8 +33,9 @@ export default class homepage extends Component {
       render() {
         return (
           <form>
-            <h4>Table:
-            <Input style={{ width: 120 }} placeholder="table number" /></h4>
+            <h4>Foodmenu</h4>
+            <h5>Table:
+            <Input style={{ width: 110 }} placeholder="table number" /></h5>
             <br />
             <label>
               Noodles $100:
