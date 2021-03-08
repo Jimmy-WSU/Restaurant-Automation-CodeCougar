@@ -11,6 +11,9 @@ import table from "./components/table.component";
 import homepagewaiter from "./components/homepagewaiter.component";
 import homepagechef from "./components/homepagechef.component";
 import homepagemanager from "./components/homepagemanager.component";
+import homepagebusboy from "./components/homepagebusboy.component";
+import tablestatus from "./components/tablestatus.component";
+
 
 
 
@@ -56,9 +59,11 @@ function App() {
             <Route path="/homepagewaiter" component={homepagewaiter} />
             <Route path="/homepagechef" component={homepagechef} />
             <Route path="/homepagemanager" component={homepagemanager} />
+            <Route path="/homepagebusboy" component={homepagebusboy} />
             <Route path="/foodmenu" component={foodmenu} />
             <Route path="/order" component={order} />
             <Route path="/table" component={table} />
+            <Route path="/tablestatus" component={tablestatus} />
 
           </Switch>
         </div>

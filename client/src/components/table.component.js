@@ -31,16 +31,16 @@ export default class table extends Component {
             <p>occupency, tablestatus</p>
             <label>
               <input
+                style={{ width: 20 }}
                 name="Table1"
                 type="checkbox"
                 checked={this.state.table1}
                 onChange={this.handleInputChange} />
                 :Table1
             </label>
-            
-            <space width="16" />
             <label>
               <input
+                style={{ width: 25 }}
                 name="Table1"
                 type="checkbox"
                 checked={this.state.table1}
@@ -51,18 +51,20 @@ export default class table extends Component {
             <label>
               
               <input
+                style={{ width: 20 }}
                 name="Table2"
                 type="checkbox"
-                checked={this.state.Table2}
+                checked={this.state.table2}
                 onChange={this.handleInputChange} />
                 :Table2
                 </label>
                 <label>
               
               <input
+                style={{ width: 25 }}
                 name="Table2"
                 type="checkbox"
-                checked={this.state.Table2}
+                checked={this.state.table2}
                 onChange={this.handleInputChange} />
                 :Table2
                 </label>
@@ -71,18 +73,20 @@ export default class table extends Component {
                 <label>
                 
               <input
+                style={{ width: 20 }}
                 name="Table3"
                 type="checkbox"
-                checked={this.state.Table3}
+                checked={this.state.table3}
                 onChange={this.handleInputChange} />
                 :Table3
             </label>
             <label>
                 
               <input
+                style={{ width: 25 }}
                 name="Table3"
                 type="checkbox"
-                checked={this.state.Table3}
+                checked={this.state.table3}
                 onChange={this.handleInputChange} />
                 :Table3
             </label>

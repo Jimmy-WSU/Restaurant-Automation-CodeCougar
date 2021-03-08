@@ -10,6 +10,7 @@ export default class homepage extends Component {
                 <Link className="form-control" to="/homepagewaiter">waiter</Link>
                 <Link className="form-control" to="/homepagechef">chef</Link>
                 <Link className="form-control" to="/homepagemanager">manager</Link>
+                <Link className="form-control" to="/homepagebusboy">busboy</Link>
 
             </form>
         );

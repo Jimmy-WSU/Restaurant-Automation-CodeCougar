@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import { Input } from 'antd';
   
 export default class homepage extends Component {
     constructor(props) {
@@ -33,9 +33,13 @@ export default class homepage extends Component {
       render() {
         return (
           <form>
+            <h4>Table:
+            <Input style={{ width: 120 }} placeholder="table number" /></h4>
+            <br />
             <label>
               Noodles $100:
               <input
+                style={{ width: 20 }}
                 name="noodles"
                 type="checkbox"
                 checked={this.state.noodles}
@@ -45,6 +49,7 @@ export default class homepage extends Component {
             <label>
               coffee $20:
               <input
+                style={{ width: 20 }}
                 name="coffee"
                 type="checkbox"
                 checked={this.state.coffee}
@@ -54,6 +59,7 @@ export default class homepage extends Component {
                 <label>
               steak $200:
               <input
+                style={{ width: 20 }}
                 name="steak"
                 type="checkbox"
                 checked={this.state.steak}
