@@ -28,7 +28,7 @@ export default class table extends Component {
         return (
           
           <form>
-            <p>occupency, tablestatus</p>
+            <p>occupency  tablestatus</p>
             <label>
               <input
                 style={{ width: 20 }}
