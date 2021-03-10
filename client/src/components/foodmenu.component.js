@@ -27,7 +27,8 @@ export default class foodmenu extends Component {
           selectedRowKeys: [],
           selectedFood: [],
           totalPrice: 0,
-          tableID: ''
+          tableID: '1',
+          username: ''
         };
         
         // this.handleInputChange = this.handleInputChange.bind(this);
@@ -66,20 +67,28 @@ export default class foodmenu extends Component {
             .catch(()=>{message.error('Internet error');})
             console.log('componentDidMount')
       }
-
       checkout (e) {
         e.preventDefault()
         console.log(this.state.tableID);
         console.log(this.selectedFood);
         axios.post('http://localhost:3001/checkout',{
           tableID: this.state.tableID,
+          waiterName: this.props.location.state,
           foodList: this.selectedFood,
           totalPrice: this.totalPrice
-      }).then((res)=>{
+        }).then((res)=>{
           console.log(res);
+          if (res) {
+            this.props.history.push({
+              pathname: '/order', 
+              state: res.data.orderID
+          });
+          }
+          // this.state.username = PubSub.subscribe('username');
+          // console.log(this.state.username);
+          
         })
             .catch(()=>{message.error('Internet error');})
-            console.log('componentDidMount')
       }
       
       render() {
@@ -97,6 +106,7 @@ export default class foodmenu extends Component {
         return (
           <form>
             <h4>Foodmenu</h4>
+            <h4>Welcome: {this.props.location.state}</h4>
             <button onClick={this.getMenu}>Get Food Menu</button>
             <Table
               columns={columns}

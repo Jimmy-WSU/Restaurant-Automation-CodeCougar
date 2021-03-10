@@ -18,14 +18,14 @@ router.use('/', function(req, res, next) {
     });
     food = food.substring(0, food.lastIndexOf(','));
     let SQL = '';
-    SQL = "INSERT INTO `order` (tableID, foodList, totalPrice) VALUES ('"+ req.body.tableID +  "', '"
-        + food +  "', '" + req.body.totalPrice + "')";
+    SQL = "INSERT INTO `order` (tableID, waiterName, foodList, totalPrice, orderStatus) VALUES ('"+ req.body.tableID +  "', '"+ req.body.waiterName +  "', '"
+        + food +  "', '" + req.body.totalPrice + "', 'Preparing')";
 
     pool.query(SQL, function (err, rows, fields) {
-        // console.log(rows)
+        console.log(rows.insertId)
         res.json({
             status: 'Successful',
-            menu: rows
+            orderID: rows.insertId
         })
     })
 });

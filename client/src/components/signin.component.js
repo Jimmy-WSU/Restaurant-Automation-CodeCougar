@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { message } from 'antd';
+import PropTypes from 'prop-types'
 
 export default class Signin extends Component {
-    
+    // static PropTypes={
+    //     value:PropTypes.string.isRequired,
+    //     onChange:PropTypes.func.isRequired
+    // }
     constructor(props) {
         super(props);
         this.state = { 
@@ -28,7 +32,7 @@ export default class Signin extends Component {
     }
     submitForm (e) {
         e.preventDefault()
-        console.log(this.state);
+        // console.log(this.state);
         // this.props.history.push('/homepage'); // <--- The page you want to redirect your user to.
         axios.post('http://localhost:3001/signin',{
             username: this.state.username,
@@ -41,9 +45,16 @@ export default class Signin extends Component {
                 if(res.data.role === 'Chef') {
                     this.props.history.push('/homepagechef');
                 } else if (res.data.role === 'Waiter') {
-                    this.props.history.push('/homepagewaiter');
+                    this.props.history.push({
+                        pathname: '/homepagewaiter', 
+                        state: this.state
+                    });
                 } else if (res.data.role === 'Manager') {
-                    this.props.history.push('/homepagemanager');
+                    // this.props.history.push('/homepagemanager');
+                    this.props.history.push({
+                        pathname: '/homepagemanager', 
+                        state: this.state
+                    });
                 }
             }
             if (res.data.status === 'Incorrect password') {
