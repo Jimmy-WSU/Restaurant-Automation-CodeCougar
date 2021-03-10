@@ -10,7 +10,7 @@ var pool  = mysql.createPool({
     database : 'restaurant_automation'
 });
 
-/* User Login */
+/* User Signin */
 router.use('/', function(req, res, next) {
     // console.log(req.body)
     pool.query("SELECT * FROM user WHERE username='" + req.body.username + "';", function (err, rows, fields) {

@@ -14,6 +14,9 @@ var app = express();
 var indexRouter = require('./routes/index');
 var signinRouter = require('./routes/signin');
 var registerRouter = require('./routes/register');
+var foodmenuRouter = require('./routes/foodmenu');
+var checkoutRouter = require('./routes/checkout');
+var tableRouter = require('./routes/table');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +41,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/signin', signinRouter);
 app.use('/register', registerRouter);
+app.use('/foodmenu', foodmenuRouter);
+app.use('/checkout', checkoutRouter);
+app.use('/table', tableRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

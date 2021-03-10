@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
 import { Select,message } from 'antd';
 const { Option } = Select;
 
@@ -105,7 +105,7 @@ export default class Register extends Component {
                     </form>
                 </div>
                 <p className="forgot-password text-right">
-                    Already registered <a href="http://localhost:3000/sign-in#">sign in?</a>
+                    Already registered? <a href="http://localhost:3000/sign-in#">Sign in</a>
                 </p>
                 
             </form>

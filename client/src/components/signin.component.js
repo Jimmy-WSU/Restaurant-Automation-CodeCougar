@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
 import { message } from 'antd';
 
 export default class Signin extends Component {
@@ -14,15 +14,6 @@ export default class Signin extends Component {
         this.submitForm = this.submitForm.bind(this);
     }
     
-    // callAPI() {
-    //     fetch("http://localhost:3001/testAPI")
-    //         .then(res => res.text())
-    //         .then(res => this.setState({ apiResponse: res }));
-    // }
-    
-    // componentWillMount() {
-    //     this.callAPI();
-    // }
     changeValues(e) {
         switch(e.target.name) {
             case 'username':
@@ -66,41 +57,24 @@ export default class Signin extends Component {
             .catch(()=>{message.error('Internet error');})
             console.log('componentDidMount')
     }
-        // axios.get('http://localhost:3001/login').then((res)=>(
-        //     // this.setState({list : [...res.data]})
-        //     console.log(res)
-        //     ))
-        //     .catch(()=>{alert('error')})
-        //     console.log('componentDidMount')
-        // }
     render() {
         return (
             <form onSubmit={this.submitForm.bind(this)}>
                 <h3>Sign In</h3>
                 <div className="form-group">
                     <label>UserName</label>
-                    <input type="text" className="form-control" placeholder="Enter name" name="username" value={this.state.username} onChange={this.changeValues} />
+                    <input type="text" className="form-control" placeholder="Enter username" name="username" value={this.state.username} onChange={this.changeValues} />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter password" name="password" value={this.state.password} onChange={this.changeValues} />
                 </div>
-
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>  
                 <div>
                     {/* <form onSubmit={this.submitForm.bind(this)}> */}
                        <button type="submit" className="btn btn-primary btn-block">Submit</button>
                     {/* </form> */}
                 </div>
-                <p className="forgot-password text-right">
-                     <a href="#">Forgot password?</a>
-                </p>
             </form>
         );
     }

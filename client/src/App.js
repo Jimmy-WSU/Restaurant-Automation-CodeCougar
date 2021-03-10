@@ -27,24 +27,11 @@ function App() {
           <Link className="navbar-brand" to={"/homepage"}>Restaurant Automation</Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to={"/homepage"}>Home</Link>
-              </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-in"}>Sign in</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/register"}>Register</Link>
-              </li>
-              
-              <li className="nav-item">
-              <Link className="nav-link" to={"/foodmenu"}>Foodmenu</Link>
-              </li>
-              <li className="nav-item">
-              <Link className="nav-link" to={"/order"}>Order</Link>
-              </li>
-              <li className="nav-item">
-              <Link className="nav-link" to={"/table"}>Table</Link>
               </li>
             </ul>
           </div>
