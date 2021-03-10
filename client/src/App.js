@@ -38,8 +38,8 @@ function App() {
         </div>
       </nav>
 
-      <div>
-        <div>
+      <div className="auth-wrapper">
+        <div className="auth-inner">
           <Switch>
             <Route exact path='/' component={Signin} />
             <Route path="/sign-in" component={Signin} />
