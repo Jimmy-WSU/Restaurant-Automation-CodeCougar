@@ -6,12 +6,12 @@ Team member:
    Parikshit Panwar
 
 For front-end, first go to client folder
-cd folder
-npm install
+cd client,
+npm install,
 npm start
 
 For back-end, go to server folder
-cd server folder
+cd server
 npm install
 npm start
 
