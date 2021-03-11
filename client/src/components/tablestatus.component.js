@@ -1,59 +1,85 @@
 import React, { Component } from 'react';
-import {  Table, Tag, Space  } from 'antd'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'antd';
+import axios from "axios";
+const { Column, ColumnGroup } = Table;
 
-
-const { Column } = Table;
-
-const data = [
-  {
-    key: '1',
-    tablenumber: 1,
-    tags: ['Unclean'],
-  },
-  {
-    key: '2',
-    tablenumber: 2,
-    tags: ['Unclean'],
-  },
-  {
-    key: '3',
-    tablenumber: 3,
-    tags: ['Unclean'],
-  },
-];
-export default class table extends Component {
+export default class tableStatus extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        tableData: [{
+            tableID: '',
+            tableStatus: ''
+        }],
+        columns:  [
+          {
+            title: 'Table Number',
+            dataIndex: 'tableID'
+          },
+          {
+            title: 'Table Status',
+            dataIndex: 'tableStatus',
+          },
+            {
+                title: 'Action',
+                key: 'action',
+                render: (text, record) => (
+                    <Space size="middle">
+                    <Button onClick = {() => {this.clean(record);}}>Clean</Button>
+                    </Space>
+                ),
+            },
+        ]
+      };
+    this.getTableList = this.getTableList.bind(this);
+  };
+  getTableList (e) {
+    e.preventDefault()
+    axios.post('http://localhost:3001/tableAll',).then((res)=>{
+        console.log(res.data);  
+        this.setState({
+          tableData: res.data.table
+        })
+    })
+        .catch(()=>{message.error('Internet error');})
+  }
+  clean (table) {
+    // e.preventDefault()
+    if (table.tableID) {
+        axios.post('http://localhost:3001/tableClean',{
+        tableID: table.tableID
+        }).then((res)=>{
+            console.log(res.data);  
+            if (res.data.status === 'Successful') {
+                message.success('Successful');           
+                axios.post('http://localhost:3001/tableAll',).then((res)=>{
+                    console.log(res.data);  
+                    this.setState({
+                      tableData: res.data.table
+                    })
+                })
+                    .catch(()=>{message.error('Internet error');})
+            } 
+        })
+            .catch(()=>{message.error('Internet error');})
+    } else {
+        message.error('Error');    
+    }
+    
+}
 render(){
   return (
-  <Table dataSource={data}>
-    
-      <Column title="Table number" dataIndex="tablenumber" key="tablenumber" />
-    
-    
-    <Column
-      title="Status"
-      dataIndex="tags"
-      key="tags"
-      render={tags => (
-        <>
-          {tags.map(tag => (
-            <Tag color="red" key={tag}>
-              {tag}
-            </Tag>
-          ))}
-        </>
-      )}
-    />
-    <Column
-      title="Action"
-      key="action"
-      render={(text, record) => (
-        <Space size="middle">
-          <a>Edit {record.lastName}</a>
-          <a>Delete</a>
-        </Space>
-      )}
-    />
-  </Table>
+    <form>
+        <h4>Table Status</h4>
+        <button onClick={this.getTableList}>Get Table Status</button>
+        <Table
+          columns={this.state.columns}
+          dataSource={this.state.tableData}
+           />
+        
+        <br />
+      </form>
   );
 }
       }

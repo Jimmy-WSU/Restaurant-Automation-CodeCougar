@@ -92,7 +92,8 @@ export default class orderWaiter extends Component {
         } 
         else if (this.state.orderDetail[0].orderStatus === 'Ready') {
             axios.post('http://localhost:3001/serveTheFoods',{
-                orderID: this.state.orderID
+                orderID: this.state.orderID,
+                tableID: this.state.orderDetail[0].tableID
             }).then((res)=>{
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {

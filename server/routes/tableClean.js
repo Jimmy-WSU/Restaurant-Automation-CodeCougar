@@ -5,16 +5,15 @@ var dbConfig = require('../config/dbConfig');
 
 var pool = mysql.createPool( dbConfig );
 
-/* Table list */
+/* Get order details */
+
 router.use('/', function(req, res, next) {
     console.log(req.body)
-    pool.query("SELECT * FROM `table` WHERE tableStatus = 'Free';", function (err, rows, fields) {
+    pool.query("UPDATE `table` SET tableStatus = 'Free' WHERE tableID = '" + req.body.tableID + "';", function (err, rows, fields) {
         console.log(rows)
         res.json({
-            status: 'Successful',
-            table: rows
+            status: 'Successful'
         })
     })
 });
-
 module.exports = router;

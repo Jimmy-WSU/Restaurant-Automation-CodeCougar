@@ -47,12 +47,20 @@ export default class Signin extends Component {
                         pathname: '/homepagechef', 
                         state: this.state
                     });
-                } else if (res.data.role === 'Waiter') {
+                } 
+                else if (res.data.role === 'Waiter') {
                     this.props.history.push({
                         pathname: '/homepagewaiter', 
                         state: this.state
                     });
-                } else if (res.data.role === 'Manager') {
+                } 
+                else if (res.data.role === 'Busboy') {
+                    this.props.history.push({
+                        pathname: '/homepagebusboy', 
+                        state: this.state
+                    });
+                } 
+                else if (res.data.role === 'Manager') {
                     // this.props.history.push('/homepagemanager');
                     this.props.history.push({
                         pathname: '/homepagemanager', 

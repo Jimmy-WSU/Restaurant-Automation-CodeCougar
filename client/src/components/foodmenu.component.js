@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Input, message, Table, Tag, Space, Typography   } from 'antd';
+import { renderOption } from 'react-dom'
+import { Input, message, Table, Tag, Space, Typography,Select,List   } from 'antd';
 import axios from "axios";
 const { Column, ColumnGroup } = Table;
+
+const { Option } = Select;
 const { Text } = Typography;
 const columns = [
   {
@@ -18,16 +21,35 @@ const columns = [
     dataIndex: 'sale',
   },
 ];
-
+let giftScope =[
+	{
+		code:200,
+		id:1,
+		name:"张三"
+	},	{
+		code:300,
+		id:2,
+		name:"李四"
+	},	{
+		code:400,
+		id:3,
+		name:"王五"
+	},	{
+		code:500,
+		id:4,
+		name:"赵六"
+	},
+]
 export default class foodmenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
           menu: [],
+          table: [],
           selectedRowKeys: [],
           selectedFood: [],
           totalPrice: 0,
-          tableID: '1',
+          tableID: '',
           username: ''
         };
         
@@ -35,6 +57,8 @@ export default class foodmenu extends Component {
         this.getMenu = this.getMenu.bind(this);
         this.checkout = this.checkout.bind(this);
         this.changeValues = this.changeValues.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        
       }
       onSelectedRowKeysChange (selectedRowKeys) {
         this.setState({ selectedRowKeys });
@@ -63,7 +87,14 @@ export default class foodmenu extends Component {
           });
         })
             .catch(()=>{message.error('Internet error');})
-            console.log('componentDidMount')
+        axios.post('http://localhost:3001/table').then((res)=>{
+          this.setState({
+            table: res.data.table
+          });
+          console.log(this.state.table)
+        })
+            .catch(()=>{message.error('Internet error');})
+            console.log(this.state.table)
       }
       checkout (e) {
         e.preventDefault()
@@ -91,7 +122,11 @@ export default class foodmenu extends Component {
         })
             .catch(()=>{message.error('Internet error');})
       }
-      
+      handleChange(value) {
+        console.log(`selected ${value}`);
+        // this.state.tableID = value;
+        this.setState({tableID: value});
+      }
       render() {
         const { selectedRowKeys } = this.state;
         const rowSelection = {
@@ -104,6 +139,8 @@ export default class foodmenu extends Component {
             console.log(this.selectedFood)
           },
         };
+        const options = this.state.table.map(d => <Option key={d.tableID}>{d.tableID}</Option>);
+
         return (
           <form>
             <h4>Foodmenu</h4>
@@ -135,8 +172,11 @@ export default class foodmenu extends Component {
                       </Table.Summary.Row>
                     </>
               );}} />
-            <h5>Table:
-            <Input style={{ width: 110 }} placeholder="table number"  name="tableID" value={this.state.tableID} onChange={this.changeValues} /></h5>
+            <h5>Free Table Number:    <Select style={{ width: 120 }} onChange={this.handleChange}>
+              {options}
+            </Select>
+            {/* <Input style={{ width: 110 }} placeholder="table number"  name="tableID" value={this.state.tableID} onChange={this.changeValues} /> */}
+            </h5>
             
             <br />
             <div>
