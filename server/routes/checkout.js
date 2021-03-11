@@ -6,7 +6,7 @@ var dbConfig = require('../config/dbConfig');
 
 var pool = mysql.createPool( dbConfig );
 
-/* User Signin */
+/* Check out orders */
 router.use('/', function(req, res, next) {
     let food = '';
     req.body.foodList.forEach(({ foodname }) => {
@@ -14,8 +14,8 @@ router.use('/', function(req, res, next) {
     });
     food = food.substring(0, food.lastIndexOf(','));
     let SQL = '';
-    SQL = "INSERT INTO `order` (tableID, waiterName, foodList, totalPrice, orderStatus) VALUES ('"+ req.body.tableID +  "', '"+ req.body.waiterName +  "', '"
-        + food +  "', '" + req.body.totalPrice + "', 'Preparing')";
+    SQL = "INSERT INTO `order` (tableID, waiterName, chefName, foodList, totalPrice, orderStatus) VALUES ('"+ req.body.tableID +  "', '"+ req.body.waiterName +  "', 'Unassigned','"
+        + food +  "', '" + req.body.totalPrice + "', 'Started')";
 
     pool.query(SQL, function (err, rows, fields) {
         console.log(rows.insertId)

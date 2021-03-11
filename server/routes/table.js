@@ -5,7 +5,7 @@ var dbConfig = require('../config/dbConfig');
 
 var pool = mysql.createPool( dbConfig );
 
-/* User Signin */
+/* Table list */
 router.use('/', function(req, res, next) {
     console.log(req.body)
     pool.query("SELECT * FROM table;", function (err, rows, fields) {

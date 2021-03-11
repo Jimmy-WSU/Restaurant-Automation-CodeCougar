@@ -6,9 +6,10 @@ var dbConfig = require('../config/dbConfig');
 var pool = mysql.createPool( dbConfig );
 
 /* Get order details */
+
 router.use('/', function(req, res, next) {
     console.log(req.body)
-    pool.query("SELECT * FROM `order` WHERE orderID = '" + req.body.orderID + "';", function (err, rows, fields) {
+    pool.query("UPDATE `order` SET orderStatus = 'Finished' WHERE orderID = '" + req.body.orderID + "';", function (err, rows, fields) {
         console.log(rows)
         res.json({
             status: 'Successful',
@@ -16,5 +17,4 @@ router.use('/', function(req, res, next) {
         })
     })
 });
-
 module.exports = router;

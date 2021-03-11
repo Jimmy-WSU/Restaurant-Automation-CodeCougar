@@ -57,9 +57,7 @@ export default class foodmenu extends Component {
       getMenu (e) {
         e.preventDefault()
         axios.post('http://localhost:3001/foodmenu').then((res)=>{
-          // console.log(res.data.menu);
           this.state.menu = res.data.menu;
-          // console.log(this.state.menu)
           this.setState({
             menu: res.data.menu
           });
@@ -80,8 +78,11 @@ export default class foodmenu extends Component {
           console.log(res);
           if (res) {
             this.props.history.push({
-              pathname: '/order', 
-              state: res.data.orderID
+              pathname: '/orderWaiter', 
+              state: {data: {
+                waiterName: this.props.location.state,
+                orderID: res.data.orderID
+              }}
           });
           }
           // this.state.username = PubSub.subscribe('username');

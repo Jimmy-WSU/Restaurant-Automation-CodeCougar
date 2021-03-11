@@ -6,7 +6,9 @@ import Signin from "./components/signin.component";
 import Register from "./components/register.component";
 import homepage from "./components/homepage.component";
 import foodmenu from "./components/foodmenu.component";
-import order from "./components/order.component";
+import orderWaiter from "./components/orderWaiter.component";
+import orderListChef from "./components/orderListChef.component";
+import orderChefDetails from "./components/orderChefDetails.component";
 import table from "./components/table.component";
 import homepagewaiter from "./components/homepagewaiter.component";
 import homepagechef from "./components/homepagechef.component";
@@ -33,13 +35,16 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/register"}>Register</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>Sign out</Link>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
 
       <div className="auth-wrapper">
-        <div className="auth-inner" style={{width: 1200}}>
+        <div className="auth-inner" style={{width: 1000}}>
           <Switch>
             <Route exact path='/' component={Signin} />
             <Route path="/sign-in" component={Signin} />
@@ -50,7 +55,9 @@ function App() {
             <Route path="/homepagemanager" component={homepagemanager} />
             <Route path="/homepagebusboy" component={homepagebusboy} />
             <Route path="/foodmenu" component={foodmenu} />
-            <Route path="/order" component={order} />
+            <Route path="/orderWaiter" component={orderWaiter} />
+            <Route path="/orderListChef" component={orderListChef} />
+            <Route path="/orderChefDetails" component={orderChefDetails} />
             <Route path="/table" component={table} />
             <Route path="/tablestatus" component={tablestatus} />
             <Route path="/salesanalysis" component={salesanalysis} />

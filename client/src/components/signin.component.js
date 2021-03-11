@@ -11,7 +11,7 @@ export default class Signin extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            username: 'James',
+            username: 'Steve',
             password: '123456'
          };
         this.changeValues = this.changeValues.bind(this);
@@ -43,7 +43,10 @@ export default class Signin extends Component {
             if (res.data.status === 'Successful') {
                 message.success('Successful');
                 if(res.data.role === 'Chef') {
-                    this.props.history.push('/homepagechef');
+                    this.props.history.push({
+                        pathname: '/homepagechef', 
+                        state: this.state
+                    });
                 } else if (res.data.role === 'Waiter') {
                     this.props.history.push({
                         pathname: '/homepagewaiter', 
