@@ -39,7 +39,7 @@ function App() {
       </nav>
 
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner" style={{width: 1200}}>
           <Switch>
             <Route exact path='/' component={Signin} />
             <Route path="/sign-in" component={Signin} />

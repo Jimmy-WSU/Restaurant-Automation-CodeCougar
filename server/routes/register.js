@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var dbConfig = require('../config/dbConfig');
 
-var pool  = mysql.createPool({
-    connectionLimit : 100,
-    host     : 'localhost',
-    user     : 'root',
-    password : '1234',
-    database : 'restaurant_automation'
-});
+var pool = mysql.createPool( dbConfig );
 
 /* User Register */
 router.use('/', function(req, res, next) {

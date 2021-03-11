@@ -1,13 +1,8 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "1234",
-    DB: "restaurant_automation",
-    dialect: "mysql",
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  };
+  connectionLimit : 100,
+  host: 'localhost',
+  user:'root',
+  password:'1234',
+  database:'restaurant_automation',
+  post:3306
+};
