@@ -53,7 +53,7 @@ render(){
       <form>
           <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
 
-          <h3>Trackemployee</h3>
+          <h3>Employee Information</h3>
           <Button onClick={this.getEmpoyees}>Get Employee Information</Button>
       <Table 
         columns={this.state.columns}

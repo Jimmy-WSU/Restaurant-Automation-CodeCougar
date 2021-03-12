@@ -11,8 +11,8 @@ export default class Signin extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            username: 'Steve',
-            password: '123456'
+            username: '',
+            password: ''
          };
         this.changeValues = this.changeValues.bind(this);
         this.submitForm = this.submitForm.bind(this);

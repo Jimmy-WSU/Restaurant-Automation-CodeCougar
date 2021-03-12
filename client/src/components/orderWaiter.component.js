@@ -4,40 +4,7 @@ import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'ant
 import axios from "axios";
 const { Column, ColumnGroup } = Table;
 
-const columns = [
-    {
-        title: 'Order ID',
-        dataIndex: 'orderID'
-    },
-    {
-        title: 'Table ID',
-        dataIndex: 'tableID'
-    },
-    {
-        title: 'Waiter Name',
-        dataIndex: 'waiterName',
-    },
-    {
-        title: 'Chef Name',
-         dataIndex: 'chefName',
-    },
-    {
-        title: 'Food List',
-        dataIndex: 'foodList',
-    },
-      {
-        title: 'Total price',
-        dataIndex: 'totalPrice',
-      },
-      {
-        title: 'Order Status',
-        dataIndex: 'orderStatus',
-      },
-      {
-        title: 'Create Time',
-        dataIndex: 'createTime',
-      },
-  ];
+
 export default class orderWaiter extends Component {
     constructor(props) {
         super(props);

@@ -8,11 +8,16 @@ export default class homepagewaiter extends Component {
             pathname:'/foodmenu',
             state: this.props.location.state.username,
         }
+        var path2 = {
+            pathname:'/orderListWaiter',
+            state: this.props.location.state.username,
+        }
         return (
             <form>
                 <h3>homepage waiter</h3>
                 <h3>Welcome: {this.props.location.state.username}</h3>
                 <Link className="form-control" to={path}>Foodmenu</Link>
+                <Link className="form-control" to={path2}>OrderList</Link>
             </form>
         );
     }

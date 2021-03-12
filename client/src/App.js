@@ -10,6 +10,7 @@ import foodmenuManager from "./components/foodmenuManager.component";
 
 import orderWaiter from "./components/orderWaiter.component";
 import orderListChef from "./components/orderListChef.component";
+import orderListWaiter from "./components/orderListWaiter.component";
 import orderChefDetails from "./components/orderChefDetails.component";
 import table from "./components/table.component";
 import homepagewaiter from "./components/homepagewaiter.component";
@@ -60,6 +61,7 @@ function App() {
             <Route path="/foodmenuManager" component={foodmenuManager} />
             <Route path="/orderWaiter" component={orderWaiter} />
             <Route path="/orderListChef" component={orderListChef} />
+            <Route path="/orderListWaiter" component={orderListWaiter} />
             <Route path="/orderChefDetails" component={orderChefDetails} />
             <Route path="/table" component={table} />
             <Route path="/tablestatus" component={tablestatus} />

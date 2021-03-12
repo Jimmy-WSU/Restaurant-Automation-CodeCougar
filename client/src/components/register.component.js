@@ -7,11 +7,11 @@ export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            username: 'Steve',
-            password: '123456',
-            role: 'Chef',
-            firstname: 'Steve',
-            lastname: 'Jobs',
+            username: '',
+            password: '',
+            role: '',
+            firstname: '',
+            lastname: '',
          };
         this.changeValues = this.changeValues.bind(this);
         this.submitForm = this.submitForm.bind(this);
@@ -72,7 +72,6 @@ export default class Register extends Component {
                 <div className="form-group">
                     <label>Role</label>
                     <Select style={{ width: 340 }} name="role" value={this.state.role} onChange={this.handleChange}>
-                        <Option value="Host">Host</Option>
                         <Option value="Waiter">Waiter</Option>
                         <Option value="Busboy">Busboy</Option>
                         <Option value="Chef">Chef</Option>

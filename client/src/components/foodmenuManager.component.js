@@ -18,8 +18,8 @@ export default class foodmenu extends Component {
           selectedRowKeys: [],
           selectedFood: [],
           username: '',
-          foodname: '123',
-          foodprice: '123',
+          foodname: '',
+          foodprice: '',
           columns: [
             {
               title: 'Food Name',

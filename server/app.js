@@ -28,7 +28,7 @@ var foodReadyRouter = require('./routes/foodReady');
 var foodAddRouter = require('./routes/foodAdd');
 var foodDeleteRouter = require('./routes/foodDelete');
 var serveTheFoodsRouter = require('./routes/serveTheFoods');
-
+var getReadyOrderListRouter = require('./routes/getReadyOrderList');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -60,6 +60,7 @@ app.use('/tableAll', tableAllRouter);
 app.use('/tableClean', tableCleanRouter);
 app.use('/orderDetails', orderDetailsRouter);
 app.use('/getUnassignedOrderList', getUnassignedOrderListRouter);
+app.use('/getReadyOrderList', getReadyOrderListRouter);
 app.use('/updateChefOrder', updateChefOrderRouter);
 app.use('/foodReady', foodReadyRouter);
 app.use('/foodAdd', foodAddRouter);

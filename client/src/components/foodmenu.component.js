@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { renderOption } from 'react-dom'
-import { Input, message, Table, Tag, Space, Typography,Select,List   } from 'antd';
+import { Input, message, Table, Tag, Space, Typography,Select,List,Button   } from 'antd';
 import axios from "axios";
 const { Column, ColumnGroup } = Table;
 
@@ -108,6 +108,15 @@ export default class foodmenu extends Component {
         // this.state.tableID = value;
         this.setState({tableID: value});
       }
+      backToLastPage = () => {
+        this.props.history.push({
+          pathname:'/homepagewaiter',
+          state:{
+            username: this.props.location.state
+          }
+        })
+      }
+      
       render() {
         const { selectedRowKeys } = this.state;
         const rowSelection = {
@@ -124,7 +133,8 @@ export default class foodmenu extends Component {
 
         return (
           <form>
-            <h4>Foodmenu</h4>
+            <h3>Foodmenu</h3>
+            <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
             <h4>Welcome: {this.props.location.state}</h4>
             <button onClick={this.getMenu}>Get Food Menu</button>
             <Table
