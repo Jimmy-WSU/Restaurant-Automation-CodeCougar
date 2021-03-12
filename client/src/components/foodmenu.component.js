@@ -21,25 +21,6 @@ const columns = [
     dataIndex: 'sale',
   },
 ];
-let giftScope =[
-	{
-		code:200,
-		id:1,
-		name:"张三"
-	},	{
-		code:300,
-		id:2,
-		name:"李四"
-	},	{
-		code:400,
-		id:3,
-		name:"王五"
-	},	{
-		code:500,
-		id:4,
-		name:"赵六"
-	},
-]
 export default class foodmenu extends Component {
     constructor(props) {
         super(props);

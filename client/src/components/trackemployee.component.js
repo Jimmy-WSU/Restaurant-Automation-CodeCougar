@@ -1,65 +1,65 @@
 import React, { Component } from "react";
-import {  Table, Tag, Space  } from 'antd'
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { renderOption } from 'react-dom'
+import { Input, message, Table, Tag, Space, Typography,Select,List,Button,Modal,Form   } from 'antd';
+import axios from "axios";
+const { Column, ColumnGroup } = Table;
 
-
-const { Column } = Table;
-
-const data = [
-  {
-    key: '1',
-    employee: 1,
-    tags: ['In', 'Off'],
-  },
-  {
-    key: '2',
-    employee: 2,
-    tags: ['In', 'Off'],
-  },
-  {
-    key: '3',
-    employee: 3,
-    tags: ['In', 'Off'],
-  },
-];
 export default class table extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      employees: [],
+      columns: [
+        {
+          title: 'First Name',
+          dataIndex: 'firstname'
+        },
+        {
+          title: 'Last Name',
+          dataIndex: 'lastname',
+        },
+        {
+          title: 'Role',
+          dataIndex: 'role',
+        },
+      ],
+    };
+    
+    this.getEmpoyees = this.getEmpoyees.bind(this);
+    
+    this.backToLastPage = this.backToLastPage.bind(this);
+  }
+    getEmpoyees (e) {
+      e.preventDefault()
+      axios.post('http://localhost:3001/employees').then((res)=>{
+        this.state.employees = res.data.employees;
+        this.setState({
+          employees: res.data.employees
+        });
+        // console.log(this.state.menu)
+      })
+          .catch(()=>{message.error('Internet error');})
+    }
+    backToLastPage = () => {
+      this.props.history.push({
+        pathname:'/homepagemanager',
+      })
+  };
 render(){
   return (
       <form>
-          <h4>Trackemployee</h4>
+          <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
+
+          <h3>Trackemployee</h3>
+          <Button onClick={this.getEmpoyees}>Get Employee Information</Button>
+      <Table 
+        columns={this.state.columns}
+        dataSource={this.state.employees}>
       
-    <Table dataSource={data}>
-    <Column title="employee" dataIndex="employee" key="employee" />
-    <Column
-      title="Status"
-      dataIndex="tags"
-      key="tags"
-      render={tags => (
-        <>
-          {tags.map(tag => {
-          let color = tag.length < 3 ? 'geekblue' : 'blue';
-          if (tag === 'Off') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-        </>
-      )}
-    />
-    <Column
-      title="Action"
-      key="action"
-      render={(text, record) => (
-        <Space size="middle">
-          <a>Edit {record.lastName}</a>
-          <a>Delete</a>
-        </Space>
-      )}
-    />
-    </Table>
+      </Table>
     </form>
   );
 }

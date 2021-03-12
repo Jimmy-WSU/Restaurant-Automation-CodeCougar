@@ -15,6 +15,8 @@ var indexRouter = require('./routes/index');
 var signinRouter = require('./routes/signin');
 var registerRouter = require('./routes/register');
 var foodmenuRouter = require('./routes/foodmenu');
+var employeesRouter = require('./routes/employees');
+
 var checkoutRouter = require('./routes/checkout');
 var tableRouter = require('./routes/table');
 var tableAllRouter = require('./routes/tableAll');
@@ -23,6 +25,8 @@ var orderDetailsRouter = require('./routes/orderDetails');
 var getUnassignedOrderListRouter = require('./routes/getUnassignedOrderList');
 var updateChefOrderRouter = require('./routes/updateChefOrder');
 var foodReadyRouter = require('./routes/foodReady');
+var foodAddRouter = require('./routes/foodAdd');
+var foodDeleteRouter = require('./routes/foodDelete');
 var serveTheFoodsRouter = require('./routes/serveTheFoods');
 
 
@@ -58,7 +62,10 @@ app.use('/orderDetails', orderDetailsRouter);
 app.use('/getUnassignedOrderList', getUnassignedOrderListRouter);
 app.use('/updateChefOrder', updateChefOrderRouter);
 app.use('/foodReady', foodReadyRouter);
+app.use('/foodAdd', foodAddRouter);
+app.use('/foodDelete', foodDeleteRouter);
 app.use('/serveTheFoods', serveTheFoodsRouter);
+app.use('/employees', employeesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

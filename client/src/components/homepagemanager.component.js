@@ -7,8 +7,8 @@ export default class homepagemanager extends Component {
         return (
             <form>
                 <h3>homepage manager</h3>
-                <Link className="form-control" to="/foodmenu">Foodmenu</Link>
-                <Link className="form-control" to="/salesanalysis">Salesanalysis</Link>
+                <Link className="form-control" to="/foodmenuManager">Foodmenu</Link>
+                {/* <Link className="form-control" to="/salesanalysis">Salesanalysis</Link> */}
                 <Link className="form-control" to="/trackemployee">Trackemployee</Link>
 
             </form>

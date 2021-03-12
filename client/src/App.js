@@ -6,6 +6,8 @@ import Signin from "./components/signin.component";
 import Register from "./components/register.component";
 import homepage from "./components/homepage.component";
 import foodmenu from "./components/foodmenu.component";
+import foodmenuManager from "./components/foodmenuManager.component";
+
 import orderWaiter from "./components/orderWaiter.component";
 import orderListChef from "./components/orderListChef.component";
 import orderChefDetails from "./components/orderChefDetails.component";
@@ -55,6 +57,7 @@ function App() {
             <Route path="/homepagemanager" component={homepagemanager} />
             <Route path="/homepagebusboy" component={homepagebusboy} />
             <Route path="/foodmenu" component={foodmenu} />
+            <Route path="/foodmenuManager" component={foodmenuManager} />
             <Route path="/orderWaiter" component={orderWaiter} />
             <Route path="/orderListChef" component={orderListChef} />
             <Route path="/orderChefDetails" component={orderChefDetails} />
