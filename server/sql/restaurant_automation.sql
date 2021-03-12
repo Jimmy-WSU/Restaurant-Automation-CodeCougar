@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 11/03/2021 00:17:12
+ Date: 12/03/2021 21:43:49
 */
 
 SET NAMES utf8mb4;
@@ -27,16 +27,7 @@ CREATE TABLE `foodmenu`  (
   `foodprice` decimal(10, 2) NOT NULL,
   `sale` int NULL DEFAULT NULL,
   PRIMARY KEY (`key`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of foodmenu
--- ----------------------------
-INSERT INTO `foodmenu` VALUES (1, 'hamburger', 1.00, 1000);
-INSERT INTO `foodmenu` VALUES (2, 'steak', 9.99, 100);
-INSERT INTO `foodmenu` VALUES (3, 'French fries', 1.00, 500);
-INSERT INTO `foodmenu` VALUES (4, 'salad', 5.00, 100);
-INSERT INTO `foodmenu` VALUES (5, 'dumplings', 2.99, 40);
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for order
@@ -52,19 +43,7 @@ CREATE TABLE `order`  (
   `orderStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `createTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`orderID`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of order
--- ----------------------------
-INSERT INTO `order` VALUES (28, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 22:41:39');
-INSERT INTO `order` VALUES (29, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 22:44:02');
-INSERT INTO `order` VALUES (30, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 22:53:52');
-INSERT INTO `order` VALUES (31, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 22:54:02');
-INSERT INTO `order` VALUES (32, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 23:02:58');
-INSERT INTO `order` VALUES (33, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 23:10:35');
-INSERT INTO `order` VALUES (34, 1, 'James', NULL, 'hamburger, steak, French fries, salad, dumplings', 19.98, 'Preparing', '2021-03-10 23:31:42');
-INSERT INTO `order` VALUES (35, 1, 'James', NULL, 'hamburger, steak, dumplings, French fries', 14.98, 'Preparing', '2021-03-10 23:45:06');
+) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for table
@@ -72,16 +51,9 @@ INSERT INTO `order` VALUES (35, 1, 'James', NULL, 'hamburger, steak, dumplings, 
 DROP TABLE IF EXISTS `table`;
 CREATE TABLE `table`  (
   `tableID` int NOT NULL,
-  `tableCleanStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `tableOccupancyStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tableStatus` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`tableID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of table
--- ----------------------------
-INSERT INTO `table` VALUES (1, 'clean', 'free');
-INSERT INTO `table` VALUES (2, 'clean', 'free');
 
 -- ----------------------------
 -- Table structure for user
@@ -97,14 +69,5 @@ CREATE TABLE `user`  (
   `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`username`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('James', '123456', 'Waiter', '2021-03-10 19:26:57', NULL, NULL, NULL);
-INSERT INTO `user` VALUES ('Steve', '123456', 'Chef', NULL, NULL, 'Steve', 'Jobs');
-INSERT INTO `user` VALUES ('Steve1', '123456', 'Chef', NULL, NULL, 'Steve', 'Jobs');
-INSERT INTO `user` VALUES ('Steve111', '123456', 'Chef', NULL, NULL, 'Steve', 'Jobs');
-INSERT INTO `user` VALUES ('Steven', '123456', 'Waiter', NULL, NULL, 'Steve', 'Jobs');
 
 SET FOREIGN_KEY_CHECKS = 1;
