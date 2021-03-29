@@ -85,7 +85,7 @@ export default class orderChefDetails extends Component {
             message.error('The order is ready!');   
         } 
         else if (this.state.orderDetail[0].orderStatus === 'Cooking') {
-            axios.post('http://localhost:3001/foodReady',{
+            axios.post('http://localhost:3001/getFoodReady',{
                 orderID: this.state.orderID
             }).then((res)=>{
                 console.log(res.data);  

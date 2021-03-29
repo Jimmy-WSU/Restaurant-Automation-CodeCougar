@@ -36,7 +36,7 @@ export default class foodmenu extends Component {
         
         // this.handleInputChange = this.handleInputChange.bind(this);
         this.getMenu = this.getMenu.bind(this);
-        this.checkout = this.checkout.bind(this);
+        this.createOrder = this.createOrder.bind(this);
         this.changeValues = this.changeValues.bind(this);
         this.handleChange = this.handleChange.bind(this);
         
@@ -77,11 +77,11 @@ export default class foodmenu extends Component {
             .catch(()=>{message.error('Internet error');})
             console.log(this.state.table)
       }
-      checkout (e) {
+      createOrder (e) {
         e.preventDefault()
         console.log(this.state.tableID);
         console.log(this.selectedFood);
-        axios.post('http://localhost:3001/checkout',{
+        axios.post('http://localhost:3001/createOrder',{
           tableID: this.state.tableID,
           waiterName: this.props.location.state,
           foodList: this.selectedFood,
@@ -171,7 +171,7 @@ export default class foodmenu extends Component {
             
             <br />
             <div>
-              <button variant="outline-primary" onClick={this.checkout}>Submit</button>
+              <button variant="outline-primary" onClick={this.createOrder}>Submit</button>
               <button variant="outline-primary">Cancel</button>
             </div>
           </form>

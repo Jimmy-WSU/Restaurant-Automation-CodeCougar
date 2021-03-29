@@ -38,7 +38,7 @@ export default class foodmenu extends Component {
               key: 'action',
               render: (text, record) => (
                   <Space size="middle">
-                  <Button  danger onClick = {() => {this.delete(record);}}>Delete</Button>
+                  <Button  danger onClick = {() => {this.deleteFood(record);}}>Delete</Button>
                   </Space>
               ),
           },
@@ -70,7 +70,7 @@ export default class foodmenu extends Component {
             .catch(()=>{message.error('Internet error');})
       }
       
-      delete (food) {
+      deleteFood (food) {
           // e.preventDefault()
           if (food.key) {
             axios.post('http://localhost:3001/foodDelete',{
