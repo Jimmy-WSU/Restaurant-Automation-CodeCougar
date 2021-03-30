@@ -34,10 +34,14 @@ export default class tableStatus extends Component {
   };
   getTableList () {
     axios.post('http://localhost:3001/tableAll',).then((res)=>{
+      if (res.data.status === 'Successful') {
+        message.success('Get table list successfully!');    
         console.log(res.data);  
         this.setState({
           tableData: res.data.table
         })
+      }
+
     })
         .catch(()=>{message.error('Internet error');})
   }
@@ -55,7 +59,7 @@ export default class tableStatus extends Component {
           }).then((res)=>{
               console.log(res.data);  
               if (res.data.status === 'Successful') {
-                  message.success('Successful');           
+                  message.success('Clean table successfully!');           
                   axios.post('http://localhost:3001/tableAll',).then((res)=>{
                       console.log(res.data);  
                       this.setState({

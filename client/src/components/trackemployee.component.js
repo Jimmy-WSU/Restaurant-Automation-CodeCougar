@@ -24,17 +24,20 @@ export default class table extends Component {
       ],
     };
     
-    this.getEmpoyees = this.getEmpoyees.bind(this);
+    this.getEmployees = this.getEmployees.bind(this);
     
     this.backToLastPage = this.backToLastPage.bind(this);
   }
-    getEmpoyees (e) {
-      e.preventDefault()
+    getEmployees () {
       axios.post('http://localhost:3001/employees').then((res)=>{
+        if (res.data.status === 'Successful') {
+          message.success('Get employee information successfully!');  
+          this.setState({
+            employees: res.data.employees
+          });
+        }
         // this.state.employees = res.data.employees;
-        this.setState({
-          employees: res.data.employees
-        });
+
         // console.log(this.state.menu)
       })
           .catch(()=>{message.error('Internet error');})
@@ -44,13 +47,16 @@ export default class table extends Component {
         pathname:'/homepagemanager',
       })
   };
+  componentWillMount(){
+    this.getEmployees();
+  }
 render(){
   return (
       <form>
           <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
 
           <h3>Employee Information</h3>
-          <Button onClick={this.getEmpoyees}>Get Employee Information</Button>
+          <Button onClick={this.getEmployees}>Refresh</Button>
       <Table 
         columns={this.state.columns}
         dataSource={this.state.employees}>
