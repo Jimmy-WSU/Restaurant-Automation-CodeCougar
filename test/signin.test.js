@@ -2,19 +2,8 @@ import { MemoryRouter } from 'react-router-dom'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react'
-import {Signin, button} from "../client/src/components/signin.component";
-import { shallow } from 'enzyme';
+import {Signin} from "../client/src/components/signin.component";
 
-
-describe('Test Button component', () => {
-  it('Test click event', () => {
-    const mockCallBack = jest.fn();
-
-    const button = shallow((<button onClick={mockCallBack}>Ok!</button>));
-    button.find('button').simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
-  });
-});
 
 test('full app rendering/navigating', () => {
   render(<Signin />, { wrapper: MemoryRouter })
