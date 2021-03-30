@@ -50,8 +50,8 @@ render(){
       key="action"
       render={(text, record) => (
         <Space size="middle">
-          <a>Edit {record.lastName}</a>
-          <a>Delete</a>
+          {/* <a>Edit {record.lastName}</a>
+          <a>Delete</a> */}
         </Space>
       )}
     />

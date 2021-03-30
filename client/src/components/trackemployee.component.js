@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { renderOption } from 'react-dom'
-import { Input, message, Table, Tag, Space, Typography,Select,List,Button,Modal,Form   } from 'antd';
+import { message, Table, Button   } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
 export default class table extends Component {
   constructor(props) {
@@ -35,7 +31,7 @@ export default class table extends Component {
     getEmpoyees (e) {
       e.preventDefault()
       axios.post('http://localhost:3001/employees').then((res)=>{
-        this.state.employees = res.data.employees;
+        // this.state.employees = res.data.employees;
         this.setState({
           employees: res.data.employees
         });

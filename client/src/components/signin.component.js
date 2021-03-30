@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { message } from 'antd';
-import PropTypes from 'prop-types'
 
 export default class Signin extends Component {
     // static PropTypes={

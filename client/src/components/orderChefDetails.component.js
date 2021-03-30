@@ -1,43 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'antd';
+import { Input, message, Space, Form, Button  } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
-const columns = [
-    {
-        title: 'Order ID',
-        dataIndex: 'orderID'
-    },
-    {
-        title: 'Table ID',
-        dataIndex: 'tableID'
-    },
-    {
-        title: 'Waiter Name',
-        dataIndex: 'waiterName',
-    },
-    {
-        title: 'Chef Name',
-         dataIndex: 'chefName',
-    },
-    {
-        title: 'Food List',
-        dataIndex: 'foodList',
-    },
-      {
-        title: 'Total price',
-        dataIndex: 'totalPrice',
-      },
-      {
-        title: 'Order Status',
-        dataIndex: 'orderStatus',
-      },
-      {
-        title: 'Create Time',
-        dataIndex: 'createTime',
-      },
-  ];
 export default class orderChefDetails extends Component {
     constructor(props) {
         super(props);
@@ -57,8 +21,7 @@ export default class orderChefDetails extends Component {
         this.backToLastPage = this.backToLastPage.bind(this);
       };
 
-    getOrderDetails (e) {
-        e.preventDefault()
+    getOrderDetails () {
         console.log(this.props.location.state);
         this.state.orderID = this.props.location.state.data.orderID;
         console.log(this.state.orderID);
@@ -78,9 +41,7 @@ export default class orderChefDetails extends Component {
         })
             .catch(()=>{message.error('Internet error');})
     }
-    getFoodReady (e) {
-        e.preventDefault()
-        
+    getFoodReady () {
         if (this.state.orderDetail[0].orderStatus === 'Ready') {
             message.error('The order is ready!');   
         } 
@@ -91,7 +52,7 @@ export default class orderChefDetails extends Component {
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {
                     message.success('Successful');          
-                    this.getOrderDetails(e);
+                    this.getOrderDetails();
                 }
             })
                 .catch(()=>{message.error('Internet error');})
@@ -103,6 +64,10 @@ export default class orderChefDetails extends Component {
           state:this.props.location.state.data.chefName
         })
     };
+
+    componentWillMount(){
+        this.getOrderDetails();
+    }
     render() {
         return (
                 

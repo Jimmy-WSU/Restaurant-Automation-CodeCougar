@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'antd';
+import { message, Table, Space,  Button  } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
 export default class tableStatus extends Component {
   constructor(props) {
@@ -34,8 +32,7 @@ export default class tableStatus extends Component {
       };
     this.getTableList = this.getTableList.bind(this);
   };
-  getTableList (e) {
-    e.preventDefault()
+  getTableList () {
     axios.post('http://localhost:3001/tableAll',).then((res)=>{
         console.log(res.data);  
         this.setState({
@@ -45,28 +42,37 @@ export default class tableStatus extends Component {
         .catch(()=>{message.error('Internet error');})
   }
   clean (table) {
-    // e.preventDefault()
     if (table.tableID) {
+      if (table.tableStatus === "Busy") {
+        message.error('The table is busy!');    
+      }
+      else if (table.tableStatus === "Free") {
+        message.error('The table is already clean!');    
+      }
+      else if (table.tableStatus === "Dirty") {
         axios.post('http://localhost:3001/tableClean',{
-        tableID: table.tableID
-        }).then((res)=>{
-            console.log(res.data);  
-            if (res.data.status === 'Successful') {
-                message.success('Successful');           
-                axios.post('http://localhost:3001/tableAll',).then((res)=>{
-                    console.log(res.data);  
-                    this.setState({
-                      tableData: res.data.table
-                    })
-                })
-                    .catch(()=>{message.error('Internet error');})
-            } 
-        })
-            .catch(()=>{message.error('Internet error');})
+          tableID: table.tableID
+          }).then((res)=>{
+              console.log(res.data);  
+              if (res.data.status === 'Successful') {
+                  message.success('Successful');           
+                  axios.post('http://localhost:3001/tableAll',).then((res)=>{
+                      console.log(res.data);  
+                      this.setState({
+                        tableData: res.data.table
+                      })
+                  })
+                      .catch(()=>{message.error('Internet error');})
+              } 
+          })
+              .catch(()=>{message.error('Internet error');})
+      } 
     } else {
         message.error('Error');    
     }
-    
+}
+componentWillMount(){
+  this.getTableList();
 }
 render(){
   return (

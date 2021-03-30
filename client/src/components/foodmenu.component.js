@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { renderOption } from 'react-dom'
-import { Input, message, Table, Tag, Space, Typography,Select,List,Button   } from 'antd';
+import { message, Table,  Typography,Select, Button   } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
 const { Option } = Select;
 const { Text } = Typography;
@@ -59,10 +56,9 @@ export default class foodmenu extends Component {
         console.log(this.state);
       }
 
-      getMenu (e) {
-        e.preventDefault()
+      getMenu () {
+        // e.preventDefault()
         axios.post('http://localhost:3001/foodmenu').then((res)=>{
-          this.state.menu = res.data.menu;
           this.setState({
             menu: res.data.menu
           });
@@ -116,7 +112,9 @@ export default class foodmenu extends Component {
           }
         })
       }
-      
+      componentWillMount(){
+        this.getMenu();
+      }
       render() {
         const { selectedRowKeys } = this.state;
         const rowSelection = {

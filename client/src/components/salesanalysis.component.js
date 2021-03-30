@@ -1,5 +1,4 @@
-import React, { Component, icons } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { Component } from "react";
 import {  Rate,   } from 'antd'
 
 

@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { renderOption } from 'react-dom'
-import { Input, message, Table, Tag, Space, Typography,Select,List,Button,Modal,Form   } from 'antd';
+import { message, Table, Space, Button,Modal,Form   } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
-const { Option } = Select;
-const { Text } = Typography;
 export default class foodmenu extends Component {
     constructor(props) {
         super(props);
@@ -48,20 +42,15 @@ export default class foodmenu extends Component {
         
         this.getMenu = this.getMenu.bind(this);
         this.showModal = this.showModal.bind(this);
-        this.handleOk = this.handleOk.bind(this);
+        this.addFood = this.addFood.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.changeValues = this.changeValues.bind(this);
         this.backToLastPage = this.backToLastPage.bind(this);
         
       }
-      // onSelectedRowKeysChange (selectedRowKeys) {
-      //   this.setState({ selectedRowKeys });
-      // };
 
-      getMenu (e) {
-        e.preventDefault()
+      getMenu () {
         axios.post('http://localhost:3001/foodmenu').then((res)=>{
-          this.state.menu = res.data.menu;
           this.setState({
             menu: res.data.menu
           });
@@ -80,7 +69,6 @@ export default class foodmenu extends Component {
                 if (res.data.status === 'Successful') {
                     message.success('Successful');           
                     axios.post('http://localhost:3001/foodmenu').then((res)=>{
-                      this.state.menu = res.data.menu;
                       this.setState({
                         menu: res.data.menu
                       });
@@ -93,10 +81,6 @@ export default class foodmenu extends Component {
             message.error('Error');    
         } 
       }
-      addFood (e) {
-        // e.preventDefault()
-
-      }
       
       showModal = () => {
           this.setState({
@@ -104,7 +88,7 @@ export default class foodmenu extends Component {
           });
       };
         
-      handleOk = () => {
+      addFood = () => {
           this.setState({
             visible: false,
         });
@@ -115,6 +99,7 @@ export default class foodmenu extends Component {
             // this.setState({list : [...res.data]})
             console.log(res.data)
             if (res.data.status === 'Successful') {
+                this.getMenu();
                 message.success('Successful');
             }
         })
@@ -143,6 +128,9 @@ export default class foodmenu extends Component {
         pathname:'/homepagemanager',
       })
   };
+      componentWillMount(){
+        this.getMenu();
+      }
       render() {
         const layout = {
           labelCol: { span: 6 },
@@ -157,7 +145,7 @@ export default class foodmenu extends Component {
               <Button type="button" onClick={this.showModal}>Add New Food</Button> 
             </Space>
             
-            <Modal title="Add New Food" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+            <Modal title="Add New Food" visible={this.state.visible} onOk={this.addFood} onCancel={this.handleCancel}>
             <Form
               {...layout}
               name="basic"

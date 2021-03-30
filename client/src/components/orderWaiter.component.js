@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'antd';
+import { Input, message, Space, Form, Button  } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
 
 export default class orderWaiter extends Component {
@@ -24,8 +22,7 @@ export default class orderWaiter extends Component {
         this.backToLastPage = this.backToLastPage.bind(this);
       };
 
-    getOrderDetails (e) {
-        e.preventDefault()
+    getOrderDetails () {
         console.log(this.props.location.state);
         this.state.orderID = this.props.location.state.data.orderID;
         console.log(this.state.orderID);
@@ -35,7 +32,7 @@ export default class orderWaiter extends Component {
           console.log(res.data.orderDetails[0]);
         //   console.log(this.state.orderDetail);
             // console.log(this.stat.orderDetail);
-            this.state.orderDetail = res.data.orderDetails[0];
+            // this.state.orderDetail = res.data.orderDetails[0];
             this.setState({
                 orderDetail: res.data.orderDetails
             })
@@ -45,8 +42,7 @@ export default class orderWaiter extends Component {
         })
             .catch(()=>{message.error('Internet error');})
     }
-    serveTheFoods (e) {
-        e.preventDefault()
+    serveTheFoods () {
         this.state.orderID = this.props.location.state.data.orderID;
         if (this.state.orderDetail[0].orderStatus === 'Started') {
             message.error('The order is waiting for cooks to choose!');   
@@ -65,7 +61,7 @@ export default class orderWaiter extends Component {
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {
                     message.success('Successful');          
-                    this.getOrderDetails(e);
+                    this.getOrderDetails();
                 }
             })
                 .catch(()=>{message.error('Internet error');})
@@ -77,6 +73,9 @@ export default class orderWaiter extends Component {
           state:this.props.location.state.data.waiterName
         })
     };
+    componentWillMount(){
+        this.getOrderDetails();
+    }
     render() {
         return (
                 

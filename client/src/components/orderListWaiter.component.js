@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Input, message, Table, Tag, Space, Typography,Form, Button  } from 'antd';
+import { message, Table, Space, Button  } from 'antd';
 import axios from "axios";
-const { Column, ColumnGroup } = Table;
 
 
 export default class orderListChef extends Component {
@@ -66,8 +64,7 @@ export default class orderListChef extends Component {
         this.takeOrder = this.takeOrder.bind(this);
       };
 
-    getOrderList (e) {
-        e.preventDefault()
+    getOrderList () {
         axios.post('http://localhost:3001/getReadyOrderList',).then((res)=>{
             console.log(res.data);  
             this.setState({
@@ -86,7 +83,8 @@ export default class orderListChef extends Component {
             }).then((res)=>{
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {
-                    message.success('Successful');          
+                    message.success('Successful');
+                    this.getOrderList();          
                 }
             })
                 .catch(()=>{message.error('Internet error');})
@@ -102,6 +100,9 @@ export default class orderListChef extends Component {
               username: this.props.location.state}
         })
     };
+    componentWillMount(){
+        this.getOrderList();
+    }
     render() {
         return (
                 
