@@ -66,10 +66,14 @@ export default class orderListChef extends Component {
 
     getOrderList () {
         axios.post('http://localhost:3001/getReadyOrderList',).then((res)=>{
-            console.log(res.data);  
-            this.setState({
-                orderDetail: res.data.orderDetails
-            })
+            if (res.data.status === 'Successful') {
+                message.success('Get order list successfully!');
+                console.log(res.data);  
+                this.setState({
+                    orderDetail: res.data.orderDetails
+                })
+            }
+            
         })
             .catch(()=>{message.error('Internet error');})
     }
@@ -83,7 +87,7 @@ export default class orderListChef extends Component {
             }).then((res)=>{
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {
-                    message.success('Successful');
+                    message.success('Take order successfully!');
                     this.getOrderList();          
                 }
             })

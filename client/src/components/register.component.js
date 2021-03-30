@@ -55,7 +55,7 @@ export default class Register extends Component {
             console.log(res.data.status === 'Successful');
             console.log(res.data.status);
             if (res.data.status === 'Successful') {
-                message.success('Successful');
+                message.success('Register Successfully!');
                 this.props.history.push('/sign-in');
             }
             if (res.data.status === 'Username already exists') {

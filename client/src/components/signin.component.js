@@ -40,7 +40,7 @@ export default class Signin extends Component {
             // this.setState({list : [...res.data]})
             console.log(res.data)
             if (res.data.status === 'Successful') {
-                message.success('Successful');
+                message.success('Sign in Successfully!');
                 if(res.data.role === 'Chef') {
                     this.props.history.push({
                         pathname: '/homepagechef', 

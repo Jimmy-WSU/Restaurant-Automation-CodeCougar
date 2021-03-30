@@ -51,9 +51,13 @@ export default class foodmenu extends Component {
 
       getMenu () {
         axios.post('http://localhost:3001/foodmenu').then((res)=>{
-          this.setState({
-            menu: res.data.menu
-          });
+          if (res.data.status === 'Successful') {
+            message.success('Get food menu successfully!');   
+            this.setState({
+              menu: res.data.menu
+            });
+
+          }
           // console.log(this.state.menu)
         })
             .catch(()=>{message.error('Internet error');})
@@ -67,7 +71,7 @@ export default class foodmenu extends Component {
             }).then((res)=>{
                 console.log(res.data);  
                 if (res.data.status === 'Successful') {
-                    message.success('Successful');           
+                    message.success('Delete food successfully!');           
                     axios.post('http://localhost:3001/foodmenu').then((res)=>{
                       this.setState({
                         menu: res.data.menu
@@ -100,7 +104,7 @@ export default class foodmenu extends Component {
             console.log(res.data)
             if (res.data.status === 'Successful') {
                 this.getMenu();
-                message.success('Successful');
+                message.success('Add food successfully!');
             }
         })
             .catch(()=>{message.error('Internet error');})

@@ -29,16 +29,16 @@ export default class orderWaiter extends Component {
         axios.post('http://localhost:3001/orderDetails',{
           orderID: this.state.orderID,
         }).then((res)=>{
-          console.log(res.data.orderDetails[0]);
-        //   console.log(this.state.orderDetail);
-            // console.log(this.stat.orderDetail);
-            // this.state.orderDetail = res.data.orderDetails[0];
-            this.setState({
-                orderDetail: res.data.orderDetails
-            })
-            // this.state.orderDetail = res.data.orderDetails[0];
-            console.log(this.state.orderDetail);
-        //   }          
+            if (res.data.status === 'Successful') {
+                message.success('Get order details successfully!');
+                console.log(res.data.orderDetails[0]);
+                this.setState({
+                    orderDetail: res.data.orderDetails
+                })
+                console.log(this.state.orderDetail);
+            } else {
+                message.error('Internet error');
+            }       
         })
             .catch(()=>{message.error('Internet error');})
     }

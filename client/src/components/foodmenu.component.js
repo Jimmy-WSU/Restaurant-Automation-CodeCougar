@@ -59,9 +59,12 @@ export default class foodmenu extends Component {
       getMenu () {
         // e.preventDefault()
         axios.post('http://localhost:3001/foodmenu').then((res)=>{
-          this.setState({
-            menu: res.data.menu
-          });
+          if (res.data.status === 'Successful') {
+            message.success('Get food menu successfully!');       
+            this.setState({
+              menu: res.data.menu
+            });
+          }
         })
             .catch(()=>{message.error('Internet error');})
         axios.post('http://localhost:3001/table').then((res)=>{
@@ -77,27 +80,34 @@ export default class foodmenu extends Component {
         e.preventDefault()
         console.log(this.state.tableID);
         console.log(this.selectedFood);
-        axios.post('http://localhost:3001/createOrder',{
-          tableID: this.state.tableID,
-          waiterName: this.props.location.state,
-          foodList: this.selectedFood,
-          totalPrice: this.totalPrice
-        }).then((res)=>{
-          console.log(res);
-          if (res) {
-            this.props.history.push({
-              pathname: '/orderWaiter', 
-              state: {data: {
-                waiterName: this.props.location.state,
-                orderID: res.data.orderID
-              }}
-          });
+        if (this.selectedFood) {
+          if (this.state.tableID) {
+            axios.post('http://localhost:3001/createOrder',{
+              tableID: this.state.tableID,
+              waiterName: this.props.location.state,
+              foodList: this.selectedFood,
+              totalPrice: this.totalPrice
+            }).then((res)=>{
+              console.log(res);
+              if (res) {
+                this.props.history.push({
+                  pathname: '/orderWaiter', 
+                  state: {data: {
+                    waiterName: this.props.location.state,
+                    orderID: res.data.orderID
+                  }}
+              });
+              }
+            })
+                .catch(()=>{message.error('Internet error');})
           }
-          // this.state.username = PubSub.subscribe('username');
-          // console.log(this.state.username);
-          
-        })
-            .catch(()=>{message.error('Internet error');})
+          else {
+            message.error('Please select the table!');
+          }
+        } else {
+          message.error('Please select the food!');
+        }
+        
       }
       handleChange(value) {
         console.log(`selected ${value}`);
@@ -134,7 +144,7 @@ export default class foodmenu extends Component {
             <h3>Foodmenu</h3>
             <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
             <h4>Welcome: {this.props.location.state}</h4>
-            <button onClick={this.getMenu}>Get Food Menu</button>
+            <Button onClick={this.getMenu}>Get Food Menu</Button>
             <Table
               columns={columns}
               dataSource={this.state.menu}
