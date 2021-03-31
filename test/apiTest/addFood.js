@@ -1,0 +1,29 @@
+const axios = require('axios');
+const qs = require('qs');
+let data = qs.stringify({
+  'foodname': 'Pizza',
+  'foodprice': '10.99' 
+});
+let config = {
+  method: 'post',
+  url: 'http://localhost:3001/foodAdd',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  data : data
+};
+
+axios(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+//Postman test script, can only run in Postman
+pm.test("Add food successfully", function () {
+  var jsonData = pm.response.json();
+  console.log(jsonData);
+  pm.expect(jsonData.status).to.eql('Successful');
+});
