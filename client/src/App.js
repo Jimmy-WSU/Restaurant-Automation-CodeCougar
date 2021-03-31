@@ -30,7 +30,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light"  style={{width: '100%'}}>
         <div className="container">
           {/* <Link className="navbar-brand" to={"/homepage"}>Restaurant Automation</Link> */}
-            <Link className="navbar-brand">Restaurant Automation</Link>
+            <div className="navbar-brand">Restaurant Automation</div>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">

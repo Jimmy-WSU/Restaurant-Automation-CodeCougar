@@ -5,7 +5,10 @@ import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react'
 import Signin from "../../client/src/components/signin.component";
 import '@testing-library/jest-dom'
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
+configure({adapter: new Adapter()});
 describe('Test Button component', () => {
   it('Test click event', () => {
     const mockCallBack = jest.fn();
