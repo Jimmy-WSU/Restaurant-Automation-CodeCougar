@@ -1,12 +1,15 @@
 const axios = require('axios');
 const qs = require('qs');
 let data = qs.stringify({
-   
+  'orderID': '65',
+  'tableID': '3' 
 });
 let config = {
   method: 'post',
-  url: 'http://localhost:3001/employees',
-  headers: { },
+  url: 'http://localhost:3001/serveTheFoods',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
   data : data
 };
 
@@ -19,12 +22,12 @@ axios(config)
 });
 
 //Postman test script, can only run in Postman
-pm.test("Get employee information successfully", function () {
+pm.test("Serve the food successfully", function () {
   var jsonData = pm.response.json();
   console.log(jsonData);
   pm.expect(jsonData.status).to.eql('Successful');
 });
 
-pm.test("Get employees' information", function () {
-  pm.expect(pm.response.text()).to.include("employees");
+pm.test("Get Order Details", function () {
+  pm.expect(pm.response.text()).to.include("orderDetails");
 });

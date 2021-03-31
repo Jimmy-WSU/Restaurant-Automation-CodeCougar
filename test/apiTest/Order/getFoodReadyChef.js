@@ -22,7 +22,7 @@ axios(config)
 
 
 //Postman test script, can only run in Postman
-pm.test("Delete food successfully", function () {
+pm.test("Get food ready successfully", function () {
   var jsonData = pm.response.json();
   console.log(jsonData);
   pm.expect(jsonData.status).to.eql('Successful');
