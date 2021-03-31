@@ -31,6 +31,7 @@ export default class tableStatus extends Component {
         ]
       };
     this.getTableList = this.getTableList.bind(this);
+    this.backToLastPage = this.backToLastPage.bind(this);
   };
   getTableList () {
     axios.post('http://localhost:3001/tableAll',).then((res)=>{
@@ -75,6 +76,11 @@ export default class tableStatus extends Component {
         message.error('Error');    
     }
 }
+backToLastPage = () => {
+  this.props.history.push({
+    pathname:'/homepagebusboy'
+  })
+};
 componentWillMount(){
   this.getTableList();
 }
@@ -82,7 +88,8 @@ render(){
   return (
     <form>
         <h4>Table Status</h4>
-        <button onClick={this.getTableList}>Get Table Status</button>
+        <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
+        <Button onClick={this.getTableList}>Get Table Status</Button>
         <Table
           columns={this.state.columns}
           dataSource={this.state.tableData}

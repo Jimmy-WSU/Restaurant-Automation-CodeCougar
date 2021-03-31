@@ -62,6 +62,7 @@ export default class orderListChef extends Component {
           };
         this.getOrderList = this.getOrderList.bind(this);
         this.takeOrder = this.takeOrder.bind(this);
+        this.backToLastPage = this.backToLastPage.bind(this);
       };
 
     getOrderList () {
@@ -107,6 +108,13 @@ export default class orderListChef extends Component {
         }
         
     }
+    backToLastPage = () => {
+        this.props.history.push({
+          pathname:'/homepagechef',
+          state:{
+            username: this.props.location.state}
+        })
+    };
     componentWillMount(){
         this.getOrderList();
     }
@@ -116,7 +124,7 @@ export default class orderListChef extends Component {
             <form>
                 <h4>Welcome: {this.props.location.state}</h4>
                 <h3>Order List</h3>
-            
+                <Button type="primary"  justify="center" onClick={this.backToLastPage }>Back</Button>
                 <Button onClick={this.getOrderList}>Get Unassigned Order List</Button>
                 <Table
                     columns={this.state.columns}
