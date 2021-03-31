@@ -15,6 +15,7 @@ export default class Signin extends Component {
          };
         this.changeValues = this.changeValues.bind(this);
         this.submitForm = this.submitForm.bind(this);
+        this.login = this.login.bind(this);
     }
     
     changeValues(e) {
@@ -31,8 +32,9 @@ export default class Signin extends Component {
     }
     submitForm (e) {
         e.preventDefault()
-        // console.log(this.state);
-        // this.props.history.push('/homepage'); // <--- The page you want to redirect your user to.
+        this.login();
+    }
+    login () {
         axios.post('http://localhost:3001/signin',{
             username: this.state.username,
             password: this.state.password
@@ -77,7 +79,8 @@ export default class Signin extends Component {
         })
             .catch(()=>{message.error('Internet error');})
             console.log('componentDidMount')
-    }
+    };
+
     render() {
         return (
             <form onSubmit={this.submitForm.bind(this)}>
