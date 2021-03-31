@@ -7,6 +7,17 @@ import Signin from "../../client/src/components/signin.component";
 import '@testing-library/jest-dom'
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
+
+
+describe('Test case for testing login',() =>{
+let wrapper;
+test('username check',()=>
+{
+wrapper = shallow(<Signin/>);
+wrapper.find('input[type="text"]').simulate('change', {target: {name: 'username', value: 'SteveWaiter'}});
+expect(wrapper.state('username')).toEqual('SteveWaiter');
+})
 
 configure({adapter: new Adapter()});
 describe('Test Button component', () => {
